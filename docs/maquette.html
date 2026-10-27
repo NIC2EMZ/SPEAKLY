@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SPEAKLY — maquette de référence (10 écrans)</title>
+<style>
+  :root{
+    --violet:#5B3FD8; --violet-d:#3E22A8; --violet-l:#EFEAFE;
+    --ink:#191634; --ink-5:#5B5578; --ink-4:#9E99B2; --line:#E9E6F3; --bg:#F7F6FC;
+    --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font);background:var(--bg);color:var(--ink)}
+  header{
+    background:linear-gradient(160deg,#6C4BE8,#3E22A8);color:#fff;padding:34px 26px 30px;
+  }
+  header h1{margin:0;font-size:26px;letter-spacing:2px;font-weight:900}
+  header p{margin:8px 0 0;opacity:.9;font-size:14px;max-width:760px;line-height:1.6}
+  .wrap{max-width:1180px;margin:0 auto;padding:26px}
+  .shot{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 18px 40px -22px rgba(45,28,130,.35)}
+  .shot img{width:100%;display:block}
+  h2{font-size:17px;margin:30px 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(25,22,52,.05)}
+  .card .n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:9px;background:var(--violet-l);color:var(--violet);font-weight:800;font-size:12px;margin-right:8px}
+  .card b{font-size:14.5px}
+  .card p{margin:8px 0 0;font-size:12.5px;line-height:1.6;color:var(--ink-5)}
+  .card ul{margin:8px 0 0;padding-left:16px;font-size:12.5px;line-height:1.6;color:var(--ink-5)}
+  .card code{background:var(--violet-l);color:var(--violet-d);border-radius:6px;padding:1px 5px;font-size:11.5px}
+  .tag{display:inline-block;margin:8px 6px 0 0;padding:4px 9px;border-radius:99px;background:var(--violet-l);color:var(--violet-d);font-size:11px;font-weight:700}
+  footer{max-width:1180px;margin:0 auto;padding:6px 26px 40px;color:var(--ink-4);font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>SPEAKLY — maquette de référence</h1>
+  <p>Maquette d'origine (10 écrans) qui a servi de spécification à l'application : écran de
+     démarrage, onboarding, choix de la langue, niveau, objectif, accueil, mission du jour,
+     aide, enregistrement et bilan. Chaque écran ci-dessous est implémenté dans l'app.</p>
+</header>
+
+<div class="wrap">
+  <div class="shot"><img src="mockup/speakly-mockup-10-screens.jpg" alt="Maquette SPEAKLY : 10 écrans de l'application" /></div>
+
+  <h2>Correspondance maquette → application</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="n">1</span><b>Splash Screen</b>
+      <p>Logo à ondes, « SPEAKLY », « Learn less. Speak more. », barre de chargement violette.</p>
+      <span class="tag">splash.js</span>
+    </div>
+    <div class="card">
+      <span class="n">2</span><b>Bienvenue / Onboarding</b>
+      <p>Bulles multilingues, promesse « L'objectif est de pouvoir LA PARLER. », bouton Commencer.</p>
+      <span class="tag">onboarding.js</span>
+    </div>
+    <div class="card">
+      <span class="n">3</span><b>Choisir sa langue</b>
+      <p>12 langues en grille avec drapeaux ; la langue choisie passe en violet avec une coche.</p>
+      <span class="tag">onboarding.js</span>
+    </div>
+    <div class="card">
+      <span class="n">4</span><b>Niveau</b>
+      <p>Radio A1 → C2, plus « Je ne sais pas » qui déclenche un test express.</p>
+      <span class="tag">onboarding.js</span>
+    </div>
+    <div class="card">
+      <span class="n">5</span><b>Objectif</b>
+      <p>8 objectifs à cocher (voyage, travail, examen…) et la durée quotidienne 5/10/15/30 min.</p>
+      <span class="tag">onboarding.js</span>
+    </div>
+    <div class="card">
+      <span class="n">6</span><b>Accueil</b>
+      <p>« Guten Morgen Alex », badge langue + série de jours, carte <code>SPEAK 5 / 05:00</code>,
+         mission du jour, barres « Cette semaine », onglets Accueil / Parler / Conversation / Progrès / Profil.</p>
+      <span class="tag">home.js</span>
+    </div>
+    <div class="card">
+      <span class="n">7</span><b>Mission du jour</b>
+      <p>Routine, 5 questions numérotées cliquables, mots utiles audio, bloc
+         « Je ne sais pas quoi dire ? » avec le bouton Aide-moi.</p>
+      <span class="tag">mission.js</span>
+    </div>
+    <div class="card">
+      <span class="n">8</span><b>Aide</b>
+      <p>4 étapes : 1. Indice · 2. Mots utiles · 3. Début de phrase · 4. Exemple, puis
+         « Maintenant, essaie avec tes propres mots ».</p>
+      <span class="tag">help.js</span>
+    </div>
+    <div class="card">
+      <span class="n">9</span><b>Enregistrement</b>
+      <p>Anneau de progression, chrono <code>04:37 / 05:00</code>, micro pulsé, vumètre,
+         transcription en direct, Pause et Terminer.</p>
+      <span class="tag">recording.js</span>
+    </div>
+    <div class="card">
+      <span class="n">10</span><b>Après l'enregistrement</b>
+      <p>« Très bien ! », durée parlée, jours de suite, réécoute, Analyse sur 4 axes
+         (fluidité, prononciation, vocabulaire, grammaire), « À travailler », Continuer.</p>
+      <span class="tag">results.js</span>
+    </div>
+  </div>
+
+  <h2>Au-delà de la maquette</h2>
+  <div class="grid">
+    <div class="card"><b>Prononciation</b><p>Sons difficiles par langue : IPA, astuce, écoute, note sur 100.</p></div>
+    <div class="card"><b>Conversation</b><p>Dialogues guidés tour par tour, l'app parle et tu réponds.</p></div>
+    <div class="card"><b>Progression</b><p>Courbe de scores, heatmap 12 semaines, lexique, 12 badges.</p></div>
+    <div class="card"><b>Profil</b><p>Langue, niveau, objectifs, voix, interface FR/EN/ES, export JSON.</p></div>
+  </div>
+</div>
+
+<footer>SPEAKLY — Learn less. Speak more. · Maquette conservée dans <code>docs/mockup/</code>.</footer>
+</body>
+</html>

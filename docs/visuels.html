@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>SPEAKLY — planche de contrôle des visuels</title>
+<style>
+  body{margin:0;background:#F7F6FC;font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;color:#191634}
+  .wrap{max-width:960px;margin:0 auto;padding:28px}
+  h1{font-size:20px;margin:0 0 4px}
+  p.sub{color:#7B7694;font-size:13px;margin:0 0 22px}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:#5B5578;margin:26px 0 10px}
+  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .cell{display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border:1px solid #E9E6F3;border-radius:14px;padding:12px 12px 8px;min-width:86px}
+  .cell small{font-size:10px;color:#9E99B2;font-weight:700}
+  .cell b{font-size:11px}
+  img{border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 1px rgba(25,22,52,.08),0 2px 6px -2px rgba(25,22,52,.22)}
+  .real{display:flex;align-items:center;gap:9px;padding:11px 12px;border:1.5px solid #DCD7EE;border-radius:16px;background:#fff;font-size:13px;font-weight:700;width:210px}
+  .pill{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:99px;background:#fff;border:1px solid #E9E6F3;font-size:11.5px;font-weight:800}
+  .flagbox{width:46px;height:46px;border-radius:15px;background:#fff;display:grid;place-items:center;box-shadow:0 1px 2px rgba(25,22,52,.05)}
+  .pictos{display:flex;gap:14px;align-items:flex-end}
+  .picto{object-fit:contain;border-radius:0;box-shadow:none;filter:drop-shadow(0 2px 4px rgba(25,22,52,.14))}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Planche de contrôle des visuels</h1>
+  <p class="sub">Drapeaux ronds aux 4 tailles utilisées dans l'app (20 / 22 / 26 / 34 px) et pictos illustrés.</p>
+
+  <h2>Les 12 langues de l'app</h2>
+  <div class="row" id="langs"></div>
+
+  <h2>Tailles réelles dans l'interface</h2>
+  <div class="row">
+    <div class="cell"><span class="pill"><img src="assets/img/flag-de.png" width="20" height="20" alt=""> ALLEMAND · B1</span><small>pastille accueil · 20 px</small></div>
+    <div class="cell"><div class="flagbox"><img src="assets/img/flag-de.png" width="34" height="34" alt=""></div><small>en-tête mission · 34 px</small></div>
+    <div class="cell"><div class="real" style="width:auto"><img src="assets/img/flag-de.png" width="26" height="26" alt=""><span>Deutsch</span></div><small>grille langues · 26 px</small></div>
+    <div class="cell"><div class="real" style="width:auto"><img src="assets/img/flag-de.png" width="22" height="22" alt=""><span>Allemand</span></div><small>ligne profil · 22 px</small></div>
+  </div>
+
+  <h2>Pictos illustrés</h2>
+  <div class="pictos">
+    <div class="cell"><div class="pictos"><img class="picto" src="assets/img/icon-travail.png" width="22" height="22" alt=""><img class="picto" src="assets/img/icon-travail.png" width="40" height="40" alt=""></div><small>travail · 22 / 40 px</small></div>
+    <div class="cell"><div class="pictos"><img class="picto" src="assets/img/icon-etudes.png" width="22" height="22" alt=""><img class="picto" src="assets/img/icon-etudes.png" width="40" height="40" alt=""></div><small>études · 22 / 40 px</small></div>
+    <div class="cell"><div class="pictos"><img class="picto" src="assets/img/icon-calendrier.png" width="22" height="22" alt=""><img class="picto" src="assets/img/icon-calendrier.png" width="40" height="40" alt=""></div><small>calendrier · 22 / 40 px</small></div>
+  </div>
+
+  <h2>Variantes régionales (drapeaux US / UK / Brésil)</h2>
+  <div class="row">
+    <div class="cell"><img src="assets/img/flag-us.png" width="34" height="34" alt=""><small>English (US)</small></div>
+    <div class="cell"><img src="assets/img/flag-gb.png" width="34" height="34" alt=""><small>English (UK)</small></div>
+    <div class="cell"><img src="assets/img/flag-pt.png" width="34" height="34" alt=""><small>Português (PT)</small></div>
+    <div class="cell"><img src="assets/img/flag-br.png" width="34" height="34" alt=""><small>Português (BR)</small></div>
+  </div>
+
+  <h2>Drapeaux bonus fournis (russes, belges)</h2>
+  <div class="row">
+    <div class="cell"><img src="assets/img/flag-ru.png" width="34" height="34" alt=""><small>Russe</small></div>
+    <div class="cell"><img src="assets/img/flag-be.png" width="34" height="34" alt=""><small>Belgique</small></div>
+  </div>
+</div>
+<script>
+  var LANGS = [
+    ['de','Allemand'],['en','Anglais'],['es','Espagnol'],['pt','Portugais'],
+    ['fr','Français'],['it','Italien'],['ko','Coréen'],['ja','Japonais'],
+    ['zh','Chinois'],['ar','Arabe'],['hi','Hindi'],['tr','Turc']
+  ];
+  var box = document.getElementById('langs');
+  LANGS.forEach(function (l) {
+    var c = document.createElement('div');
+    c.className = 'cell';
+    c.innerHTML = '<img src="assets/img/flag-' + l[0] + '.png" width="34" height="34" alt=""><small>' + l[1] + '</small>';
+    box.appendChild(c);
+  });
+</script>
+</body>
+</html>

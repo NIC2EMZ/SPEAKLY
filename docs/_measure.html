@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>mesure</title>
+<style>
+  body{margin:0;font:13px/1.5 monospace;background:#111;color:#0f0;padding:10px}
+  iframe{position:absolute;left:-9999px;top:0;width:390px;height:844px;border:0}
+  .k{color:#ff0}
+</style>
+</head>
+<body>
+<div id="out">mesure en cours…</div>
+<iframe id="app" src="../index.html?demo=1#home"></iframe>
+<script>
+  var out = document.getElementById('out');
+  var f = document.getElementById('app');
+  function report() {
+    var w = f.contentWindow, d = w.document;
+    var q = function (s) { return d.querySelector(s); };
+    var m = function (el) {
+      if (!el) return 'absent';
+      var r = el.getBoundingClientRect();
+      var cs = w.getComputedStyle(el);
+      return Math.round(r.width) + 'x' + Math.round(r.height) + ' @' + Math.round(r.left) + ',' + Math.round(r.top)
+        + ' pad=' + cs.paddingLeft + '/' + cs.paddingRight + ' minW=' + cs.minWidth
+        + ' display=' + cs.display + ' pos=' + cs.position;
+    };
+    var lines = [
+      'innerWidth=' + w.innerWidth + ' innerHeight=' + w.innerHeight,
+      'doc.clientWidth=' + d.documentElement.clientWidth + ' scrollWidth=' + d.documentElement.scrollWidth,
+      'body.scrollWidth=' + w.document.body.scrollWidth,
+      'device: ' + m(q('.device')),
+      'shell: ' + m(q('.shell')),
+      'shellMain: ' + m(q('.shell-main')),
+      'viewport: ' + m(q('.viewport')),
+      'screen: ' + m(q('.screen')),
+      'screen-body: ' + m(q('.screen-body')),
+      'hero(.card-violet): ' + m(q('.card-violet')),
+      'statgrid: ' + m(q('.stat-grid')),
+      'tabbar: ' + m(q('.tabbar')),
+      'tab1: ' + m(q('.tabbar button')),
+      'h1(.hello): ' + m(q('.hello')),
+      'font .hello=' + (q('.hello') ? w.getComputedStyle(q('.hello')).fontSize : '-'),
+      'font .h1=' + (q('.h1') ? w.getComputedStyle(q('.h1')).fontSize : '-'),
+      'pad var=' + (q('.viewport') ? w.getComputedStyle(q('.viewport')).getPropertyValue('--pad') : '-'),
+      'media <=520=' + w.matchMedia('(max-width:520px)').matches
+    ];
+    out.innerHTML = lines.map(function (l) { return l.replace(/([^=]+)=/, '<span class="k">$1</span>='); }).join('<br>');
+  }
+  f.addEventListener('load', function () { setTimeout(report, 1200); });
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>capture</title>
+<style>
+  html,body{margin:0;background:#fff}
+  iframe{border:0;display:block;width:100%;height:100vh}
+</style></head><body>
+<iframe id="f"></iframe>
+<script>
+  var p = new URLSearchParams(location.search);
+  var w = p.get('w') || '390', h = p.get('h') || '844';
+  var u = p.get('u') || '../index.html?demo=1#home';
+  var f = document.getElementById('f');
+  f.style.width = w + 'px';
+  f.style.height = h + 'px';
+  f.src = u;
+</script>
+</body></html>
